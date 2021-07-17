@@ -1,0 +1,15 @@
+[Unit]
+Description=Install IPA client
+After=network-online.target multi-user.target
+Requires=multi-user.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/ipajoinpre.sh
+ExecStop=/opt/ipajoin.sh
+StandardOutput=journal
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
